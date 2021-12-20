@@ -15,11 +15,13 @@ Thats all
 
 # Buld the App 
 with following code:
+ Create new file named setup.py
+ 
 ```python
 import sys
 from cx_Freeze import setup, Executable
 
-build_exe_options = {'packages': ['os'], 'excludes':['tkinter']}
+build_exe_options = {'packages': ['os'], 'excludes':['none']}
 base = None
 if sys.platform == 'win32':
     base = "Win32GUI"
@@ -29,5 +31,7 @@ setup(name = 'MailSender',
       description = 'Tool to send E-Mails with many attachments',
       options = {'build_exe': build_exe_options},
       executables = [Executable('main.py', base=base)])
+
+#$> setup.py build
 ```
 and the UI is self explanatory
