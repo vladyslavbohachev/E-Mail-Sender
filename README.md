@@ -1,6 +1,16 @@
 # ** THE POWERSHELL VERSION ** 
-# E-Mail Sender with powershell 
-Send e-mails to one recipient with many attachments 
+```powershell
+$foldercontent = get-childitem "path_to_your_data";
+	ForEach($item in $foldercontent){
+	$ol = New-Object -comObject Outlook.Application;
+	$mail = $ol.CreateItem(0);
+	$Mail.Recipients.Add("enter@email.address");
+	$Mail.Subject = "Subject with name of the document"+$item.Name;
+	$Mail.Body = get-content  -Path "path_to_your_body_text\body.txt" | Out-String;
+	$Mail.Attachments.Add($item.fullname);
+	$Mail.send();                
+	}
+```
 
 Imagine you have to send many attachments (i.o.c. pdf documents) to only one recipient, but your e-mail can only send 20 MB. This script helps you to do it faster.
 
