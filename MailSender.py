@@ -31,7 +31,7 @@ def send():
             par = subject +' '+ item.split('.')[0]
             newMail.Subject = par
             newMail.BodyFormat = 2  # olFormatHTML https://msdn.microsoft.com/en-us/library/office/aa219371(v=office.11).aspx
-            newMail.HTMLBody = body
+            newMail.Body = body
             newMail.To = email
             attachment = os.path.join(directory, item)
             newMail.Attachments.Add(attachment)
